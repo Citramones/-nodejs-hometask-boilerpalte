@@ -1,10 +1,16 @@
 const { Router } = require('express');
 const UserService = require('../services/userService');
-const { createUserValid, updateUserValid } = require('../middlewares/user.validation.middleware');
+
 const { responseMiddleware } = require('../middlewares/response.middleware');
+const { createUserValid, updateUserValid, } = require('../middlewares/user.validation.middleware');
 
 const router = Router();
 
-// TODO: Implement route controllers for user
+
+router.get('/',UserService.getAllUsers,responseMiddleware)
+router.get('/:id',UserService.search,responseMiddleware)
+router.post('/',createUserValid,UserService.postUsers,responseMiddleware)
+router.put('/:id',updateUserValid,UserService.putUser,responseMiddleware)
+router.delete("/:id", UserService.deleteUser, responseMiddleware);
 
 module.exports = router;

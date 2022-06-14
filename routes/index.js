@@ -8,4 +8,5 @@ module.exports = (app) => {
     app.use('/api/fighters', fighterRoutes);
     app.use('/api/fights', fightRoutes);
     app.use('/api/auth', authRoutes);
+
   };

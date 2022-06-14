@@ -9,11 +9,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 const routes = require('./routes/index');
+const Console = require("console");
 routes(app);
 
 app.use('/', express.static('./client/build'));
 
 const port = 3050;
-app.listen(port, () => {});
+app.listen(port, () => {console.log(`http://localhost:${port}/`)});
 
 exports.app = app;
